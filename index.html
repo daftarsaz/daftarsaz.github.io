@@ -1,0 +1,57 @@
+---
+layout: default
+title: دفترساز
+show_masthead: true
+---
+<section id="posts">
+  <div class="section-head">
+    <h2>نوشته‌ها</h2>
+    <span class="count" id="postCount">{{ site.posts | size }} نوشته</span>
+    <span class="grow"></span>
+  </div>
+
+  <div class="search-row">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+      <input id="searchInput" type="search" placeholder="جستجو در نوشته‌ها…" aria-label="جستجو در نوشته‌ها">
+    </div>
+  </div>
+
+  <div id="postList">
+  {% for post in site.posts %}
+    <a class="post-card" href="{{ post.url }}" data-search="{{ post.title }} {{ post.summary }} {{ post.tag }}">
+      <div class="meta"><span>{{ post.fa_date }}</span><span class="tag">{{ post.tag }}</span></div>
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.summary }}</p>
+      <span class="read-more">خواندن نوشته ←</span>
+    </a>
+  {% endfor %}
+  </div>
+  <p id="noResults" class="empty-note hidden">نوشته‌ای با این جستجو پیدا نشد.</p>
+</section>
+
+<section id="about" class="about">
+  <h2>دربارهٔ این دفتر</h2>
+  <p>«دفترساز» دفتر شخصی من است؛ جایی که نوشته‌ها و یادداشت‌هایم را نگه می‌دارم تا هم خودم هر وقت خواستم برگردم و بخوانمشان، هم هر کس این نشانی را دارد بتواند سری به این دفتر بزند.</p>
+  <p>موضوع‌ها می‌تواند هر چیزی باشد: از فکرها و تجربه‌های روزمره تا چیزهایی که یاد می‌گیرم و دوست دارم فراموششان نکنم. این دفتر تازه باز شده و صفحه‌هایش کم‌کم پر می‌شود.</p>
+  <p class="sig">— مسعود</p>
+</section>
+
+<script>
+  var searchInput = document.getElementById("searchInput");
+  var postList = document.getElementById("postList");
+  var postCount = document.getElementById("postCount");
+  var noResults = document.getElementById("noResults");
+  searchInput.addEventListener("input", function () {
+    var q = searchInput.value.trim();
+    var shown = 0;
+    var cards = postList.querySelectorAll(".post-card");
+    cards.forEach(function (card) {
+      var hit = !q || (card.getAttribute("data-search") || "").indexOf(q) !== -1;
+      card.classList.toggle("hidden", !hit);
+      if (hit) shown++;
+    });
+    postCount.textContent = shown + " نوشته";
+    noResults.classList.toggle("hidden", shown !== 0);
+  });
+</script>
