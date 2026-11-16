@@ -1,0 +1,6 @@
+title: دفترساز
+description: دفتر یادداشت‌های من؛ جایی برای نوشته‌ها، فکرها و تجربه‌هایی که ارزش نگه‌داشتن و خواندن دارند.
+url: https://daftarsaz.github.io
+lang: fa
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
