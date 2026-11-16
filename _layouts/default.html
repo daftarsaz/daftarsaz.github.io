@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}دفترساز</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@700&family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="fa-name">دفترساز</span>
+        <span class="en-name">Daftarsaz</span>
+      </a>
+      <nav class="main-nav">
+        <a href="/">خانه</a>
+        <a href="/#about">درباره</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    {% if page.show_masthead %}
+    <section class="masthead">
+      <div class="rule"><span>✦</span></div>
+      <h1>دفترساز</h1>
+      <div class="latin">Daftarsaz</div>
+      <p class="tagline">{{ site.description }}</p>
+      <div class="cover">
+        <img src="/assets/images/cover.jpg" alt="دفتر باز، قلم و چای">
+      </div>
+    </section>
+    {% endif %}
+
+    {{ content }}
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="latin">Daftarsaz</div>
+      <p>دفترساز — دفتر یادداشت‌های مسعود</p>
+    </div>
+  </footer>
+</body>
+</html>
